@@ -25,6 +25,6 @@
 
     <PreferenceScreen
         android:title="@string/preview_data_title"
-        android:fragment="org.carbonrom.carbonfibers.crstats.PreviewData" />
+        android:fragment="org.tipsy.martysplace.crstats.PreviewData" />
 
 </PreferenceScreen>

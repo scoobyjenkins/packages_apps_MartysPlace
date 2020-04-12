@@ -11,7 +11,7 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="carbonfibers">Carbon Fibers</string>
+    <string name="martysplace">Marty\'s Place</string>
     <string name="system_category">System</string>
     <string name="status_bar_category">Status bar</string>
     <string name="lock_screen_category">Lock screen</string>
@@ -43,18 +43,18 @@
     <string name="privacy_main_category_summary">Misc and stats collection settings</string>
 
     <!-- Dialog -->
-    <string name="carbonfibers_dialog_title">Help us help you!</string>
-    <string name="carbonfibers_dialog_message">Unfortunately, we are not wizards!\n\nIf you find a bug, please open up a ticket on Jira or
+    <string name="martysplace_dialog_title">Help us help you!</string>
+    <string name="martysplace_dialog_message">Unfortunately, we are not wizards!\n\nIf you find a bug, please open up a ticket on Jira or
         contact a Carbon developer with the following.\n\n1. Blame kwoktopus\n2. Logcat and/or last_kmsg\n3. Kernel and mods used\n4.
         Miscallaneous information\n\nIf you fail to report with the above information, do not expect the issue to be considered.</string>
-    <string name="carbonfibers_dialog_toast">Read it all!</string>
+    <string name="martysplace_dialog_toast">Read it all!</string>
 
     <!-- Anonymous Statistics #CM -->
     <!-- About device screen, list item title. Takes the user to the screen about opting in or out of anonymous statistics. -->
-    <string name="anonymous_statistics_title">CarbonROM statistics</string>
-    <string name="anonymous_statistics_summary">Help make CarbonROM better by opting into anonymous statistics reporting</string>
+    <string name="anonymous_statistics_title">Tipsy statistics</string>
+    <string name="anonymous_statistics_summary">Help make Tipsy better by opting into anonymous statistics reporting</string>
     <string name="anonymous_statistics_warning_title">About</string>
-    <string name="anonymous_statistics_warning">Opting into CarbonROM Statistics will allow non-personal data to be submitted to the
+    <string name="anonymous_statistics_warning">Opting into Tipsy Statistics will allow non-personal data to be submitted to the
         developers of Carbon to track unique installations across devices. The information submitted includes an unique identifier,
         which does not compromise your privacy or personal data. The data is submitted during each boot.\n\nFor an example of the data
         that is submitted, tap on Preview data.</string>
