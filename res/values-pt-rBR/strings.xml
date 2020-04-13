@@ -32,28 +32,6 @@
         Informações Diversas\n\nSe você não reportar com as informações acima, não espere que o problema seja considerado.</string>
     <string name="martysplace_dialog_toast">Leia tudo!</string>
 
-    <!-- Anonymous Statistics #CM -->
-    <!-- About device screen, list item title. Takes the user to the screen about opting in or out of anonymous statistics. -->
-    <string name="anonymous_statistics_title">Tipsy Estatisticas</string>
-    <string name="anonymous_statistics_summary">Ajude a melhorar o Tipsy optando por relatórios estatísticos anônimas</string>
-    <string name="anonymous_statistics_warning_title">Sobre</string>
-    <string name="anonymous_statistics_warning">A opção pelo Tipsy Statistics permitirá que dados não pessoais sejam enviados para o
-        desenvolvedores de Carbon para rastrear instalações únicas entre dispositivos. As informações enviadas incluem um identificador exclusivo,
-        o que não compromete sua privacidade ou dados pessoais. Os dados são enviados durante cada inicialização.\n\ nPara um exemplo dos dados
-        enviado, toque em Visualizar dados.</string>
-    <string name="enable_reporting_title">Ativar relatórios</string>
-    <string name="preview_data_title">Visualizar dados</string>
-    <string name="view_stats_title">Ver status</string>
-    <string name="anonymous_learn_more">Ler mais</string>
-
-    <!-- Anonymous Statistics - Preview -->
-    <string name="preview_id_title">ID Unico</string>
-    <string name="preview_device_title">Dispositivo</string>
-    <string name="preview_version_title">Versão</string>
-    <string name="preview_country_title">Pais</string>
-    <string name="preview_carrier_title">Operadora</string>
-    <string name="stats_collection_title">Ativar coleta de estatísticas</string>
-
     <!-- Smart Pixels -->
     <string name="smart_pixels_title">Pixels inteligentes</string>
     <string name="smart_pixels_summary">Desligue os pixels para reduzir o consumo de energia</string>

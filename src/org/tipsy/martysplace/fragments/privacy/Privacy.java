@@ -35,7 +35,6 @@ import java.util.List;
 @SearchIndexable
 public class Privacy extends CustomSettingsPreferenceFragment implements Indexable {
     private static final String TAG = "Privacy";
-    private static final String CARBON_STATS = "crstats";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -58,11 +57,5 @@ public class Privacy extends CustomSettingsPreferenceFragment implements Indexab
                     return result;
                 }
 
-                @Override
-                public List<String> getNonIndexableKeys(Context context) {
-                    List<String> keys = super.getNonIndexableKeys(context);
-                    keys.add(CARBON_STATS);
-                    return keys;
-                }
             };
 }
