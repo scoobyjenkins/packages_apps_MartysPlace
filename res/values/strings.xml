@@ -43,8 +43,7 @@
 
     <!-- Dialog -->
     <string name="martysplace_dialog_title">Help us help you!</string>
-    <string name="martysplace_dialog_message">Unfortunately, we are not wizards!\n\nIf you find a bug, please open up a ticket on Jira or
-        contact a Carbon developer with the following.\n\n1. Blame kwoktopus\n2. Logcat and/or last_kmsg\n3. Kernel and mods used\n4.
+    <string name="martysplace_dialog_message">Unfortunately, we are not mind readers!\n\nIf you find a bug, contact the Tipsy team or device maintainer with the following.\n\n1. Blame Nimit\n2. Logcat and/or last_kmsg\n3. Kernel and mods used\n4.
         Miscallaneous information\n\nIf you fail to report with the above information, do not expect the issue to be considered.</string>
     <string name="martysplace_dialog_toast">Read it all!</string>
 
