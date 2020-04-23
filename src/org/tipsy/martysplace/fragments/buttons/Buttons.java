@@ -19,6 +19,8 @@ package org.tipsy.martysplace.fragments.buttons;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.PowerManager;
+import android.os.UserHandle; 
 import android.provider.SearchIndexableResource;
 import android.provider.Settings;
 import android.widget.Toast;
@@ -33,6 +35,7 @@ import com.android.internal.util.cr.CrUtils;
 
 import com.android.settings.R;
 import com.android.settings.carbon.CustomSettingsPreferenceFragment;
+import com.android.settings.carbon.CustomSeekBarPreference;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
 import com.android.settingslib.search.SearchIndexable;
@@ -50,10 +53,16 @@ public class Buttons extends CustomSettingsPreferenceFragment implements Prefere
     private static final String VOLUME_BUTTON_MUSIC_CONTROL = "volume_button_music_control";
     private static final String TORCH_POWER_BUTTON_GESTURE = "torch_power_button_gesture";
     private static final String SWAP_VOLUME_KEYS_ON_ROTATION = "swap_volume_keys_on_rotation";
+    private static final String KEY_BUTON_BACKLIGHT_OPTIONS = "button_backlight_options_category";
 
     private ListPreference mNavBarLayout;
     private ListPreference mTorchPowerButton;
     private ContentResolver mResolver;
+    private CustomSeekBarPreference mBrightness;
+    private CustomSeekBarPreference mTimeout;
+    private SwitchPreference mEnabled;
+    private SwitchPreference mTouch;
+    private SwitchPreference mScreen;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -65,6 +74,38 @@ public class Buttons extends CustomSettingsPreferenceFragment implements Prefere
         addCustomPreference(findPreference(INVERSE_NAVBAR), SECURE_TWO_STATE, STATE_OFF);
         addCustomPreference(findPreference(VOLUME_BUTTON_MUSIC_CONTROL), SYSTEM_TWO_STATE, STATE_OFF);
         addCustomPreference(findPreference(SWAP_VOLUME_KEYS_ON_ROTATION), SYSTEM_TWO_STATE, STATE_OFF);
+
+        boolean isEnabled = Settings.System.getIntForUser(mResolver,
+                Settings.System.BUTTON_BACKLIGHT_ENABLE, 1, UserHandle.USER_CURRENT) == 1;
+        mEnabled = (SwitchPreference) findPreference("button_backlight_enable");
+        mEnabled.setChecked(isEnabled);
+        mEnabled.setOnPreferenceChangeListener(this);
+
+        boolean isTouch = Settings.System.getIntForUser(mResolver,
+                Settings.System.BUTTON_BACKLIGHT_ON_TOUCH_ONLY, 1, UserHandle.USER_CURRENT) == 1;
+        mTouch = (SwitchPreference) findPreference("button_backlight_on_touch_only");
+        mTouch.setChecked(isTouch);
+        mTouch.setOnPreferenceChangeListener(this);
+
+        boolean isScreen = Settings.System.getIntForUser(mResolver,
+                Settings.System.CUSTOM_BUTTON_USE_SCREEN_BRIGHTNESS, 1, UserHandle.USER_CURRENT) == 1;
+        mScreen = (SwitchPreference) findPreference("custom_button_use_screen_brightness");
+        mScreen.setChecked(isScreen);
+        mScreen.setOnPreferenceChangeListener(this);
+
+        int value = Settings.System.getIntForUser(mResolver,
+                Settings.System.CUSTOM_BUTTON_BRIGHTNESS, 1, UserHandle.USER_CURRENT);
+        mBrightness = (CustomSeekBarPreference) findPreference("custom_button_brightness");
+        mBrightness.setValue(value);
+        mBrightness.setOnPreferenceChangeListener(this);
+        mBrightness.setEnabled(isEnabled);
+
+        int timeoutValue = Settings.System.getIntForUser(mResolver,
+                Settings.System.BUTTON_BACKLIGHT_TIMEOUT, 1, UserHandle.USER_CURRENT);
+        mTimeout = (CustomSeekBarPreference) findPreference("button_backlight_timeout");
+        mTimeout.setValue(timeoutValue);
+        mTimeout.setOnPreferenceChangeListener(this);
+        mTimeout.setEnabled(isEnabled);
 
         mNavBarLayout = (ListPreference) findPreference(NAV_BAR_LAYOUT);
         mNavBarLayout.setOnPreferenceChangeListener(this);
@@ -108,6 +149,42 @@ public class Buttons extends CustomSettingsPreferenceFragment implements Prefere
                         (R.string.torch_power_button_gesture_dt_toast),
                         Toast.LENGTH_SHORT).show();
             }
+            return true;
+        }
+        if (preference == mEnabled) {
+            boolean value = (Boolean) objValue;
+            Settings.System.putIntForUser(getActivity().getContentResolver(),
+                    Settings.System.BUTTON_BACKLIGHT_ENABLE, value ? 1 : 0,
+                    UserHandle.USER_CURRENT);
+            mEnabled.setChecked(value);
+            mTimeout.setEnabled(value);
+            mBrightness.setEnabled(value);
+            return true;
+        } else if (preference == mTouch) {
+            boolean value = (Boolean) objValue;
+            Settings.System.putIntForUser(getActivity().getContentResolver(),
+                    Settings.System.BUTTON_BACKLIGHT_ON_TOUCH_ONLY, value ? 1 : 0,
+                    UserHandle.USER_CURRENT);
+            mTouch.setChecked(value);
+            return true;
+        } else if (preference == mScreen) {
+            boolean value = (Boolean) objValue;
+            Settings.System.putIntForUser(getActivity().getContentResolver(),
+                    Settings.System.CUSTOM_BUTTON_USE_SCREEN_BRIGHTNESS, value ? 1 : 0,
+                    UserHandle.USER_CURRENT);
+            mScreen.setChecked(value);
+            return true;
+        } else if (preference == mBrightness) {
+            int val = (Integer) objValue;
+            Settings.System.putIntForUser(getContentResolver(),
+                    Settings.System.CUSTOM_BUTTON_BRIGHTNESS, val,
+                    UserHandle.USER_CURRENT);
+            return true;
+        } else if (preference == mTimeout) {
+            int val = (Integer) objValue;
+            Settings.System.putIntForUser(getContentResolver(),
+                    Settings.System.BUTTON_BACKLIGHT_TIMEOUT, val,
+                    UserHandle.USER_CURRENT);
             return true;
         }
         return false;

@@ -65,4 +65,44 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory
+        android:key="button_lights_category"
+        android:title="@string/button_lights_title" >
+
+    <SwitchPreference
+        android:key="button_backlight_enable"
+        android:title="@string/button_backlight_title"
+        android:summary="@string/button_backlight_summary"
+        android:defaultValue="true" />
+
+    <com.android.settings.carbon.CustomSeekBarPreference
+        android:key="button_backlight_timeout"
+        android:title="@string/button_backlight_timeout_title"
+        android:max="100"
+        settings:min="0"
+        settings:units=""
+        android:defaultValue="1" />
+
+    <SwitchPreference
+        android:key="button_backlight_on_touch_only"
+        android:title="@string/button_backlight_on_touch_only_title"
+        android:summary="@string/button_backlight_on_touch_only_summary"
+        android:defaultValue="false" />
+
+    <SwitchPreference
+        android:key="custom_button_use_screen_brightness"
+        android:title="@string/custom_button_lights_title"
+        android:summary="@string/custom_button_lights_summary"
+        android:defaultValue="false" />
+
+    <com.android.settings.carbon.CustomSeekBarPreference
+        android:key="custom_button_brightness"
+        android:title="@string/custom_button_brightness_title"
+        android:max="250"
+        settings:min="0"
+        settings:units=""
+        android:defaultValue="1" />
+
+    </PreferenceCategory>
+
 </PreferenceScreen>

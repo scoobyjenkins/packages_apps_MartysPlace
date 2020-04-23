@@ -295,4 +295,16 @@
     <string name="status_bar_battery_percentage_text_inside">Inside the icon</string>
     <string name="status_bar_battery_percentage_text_next">Next to the icon</string>
 
+    <!-- Button backlights -->
+    <string name="custom_back_lights_title">Button backlights</string>
+    <string name="button_lights_title">Button backlights</string>
+    <string name="button_backlight_title">Enable backlights</string>
+    <string name="button_backlight_summary">Turn backlights on or off</string>
+    <string name="button_backlight_timeout_title">Set timeout on backlights</string>
+    <string name="button_backlight_on_touch_only_title">On touch</string>
+    <string name="button_backlight_on_touch_only_summary">Backlights only function on button touch</string>
+    <string name="custom_button_lights_title">Match screen brightness</string>
+    <string name="custom_button_lights_summary">Activate to adopt screen brightness level</string>
+    <string name="custom_button_brightness_title">Set brightness manually</string>
+
 </resources>
