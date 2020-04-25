@@ -53,7 +53,7 @@ public class Buttons extends CustomSettingsPreferenceFragment implements Prefere
     private static final String VOLUME_BUTTON_MUSIC_CONTROL = "volume_button_music_control";
     private static final String TORCH_POWER_BUTTON_GESTURE = "torch_power_button_gesture";
     private static final String SWAP_VOLUME_KEYS_ON_ROTATION = "swap_volume_keys_on_rotation";
-    private static final String KEY_BUTON_BACKLIGHT_OPTIONS = "button_backlight_options_category";
+    private static final String KEY_BUTON_BACKLIGHT_OPTIONS = "button_lights_category";
 
     private ListPreference mNavBarLayout;
     private ListPreference mTorchPowerButton;
@@ -63,6 +63,7 @@ public class Buttons extends CustomSettingsPreferenceFragment implements Prefere
     private SwitchPreference mEnabled;
     private SwitchPreference mTouch;
     private SwitchPreference mScreen;
+    private PreferenceCategory mButtonBackLightCategory;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -106,6 +107,14 @@ public class Buttons extends CustomSettingsPreferenceFragment implements Prefere
         mTimeout.setValue(timeoutValue);
         mTimeout.setOnPreferenceChangeListener(this);
         mTimeout.setEnabled(isEnabled);
+        final boolean enableBacklightOptions = getResources().getBoolean(
+                com.android.internal.R.bool.config_button_brightness_support);
+
+        mButtonBackLightCategory = (PreferenceCategory) findPreference(KEY_BUTON_BACKLIGHT_OPTIONS);
+
+        if (!enableBacklightOptions) {
+            mButtonBackLightCategory.getParent().removePreference(mButtonBackLightCategory);
+        }
 
         mNavBarLayout = (ListPreference) findPreference(NAV_BAR_LAYOUT);
         mNavBarLayout.setOnPreferenceChangeListener(this);
